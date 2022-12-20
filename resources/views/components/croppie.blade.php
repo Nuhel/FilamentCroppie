@@ -164,7 +164,7 @@
                 <div class="h-full w-full" wire:ignore >
                     {{-- init Alpine --}}
                     <div class="h-full w-full relative"  >
-                        <div  x-on:click.prevent class="tf-cropper-modal bg-white h-full">
+                        <div  x-on:click.prevent class="bg-transparent h-full">
                             <div class="m-auto flex-col" x-ref="croppie"></div>
                         </div>
 
