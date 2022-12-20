@@ -1,0 +1,36 @@
+{
+    "name": "nuhel/filament-croppie",
+    "keywords": [
+        "nuhel",
+        "laravel",
+        "filament-croppie"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nuhel\\FilamentCroppie\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nuhel",
+            "email": "nuheljft@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0",
+        "filament/filament": "^2.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nuhel\\FilamentCroppie\\FilamentCroppieServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+
+}
