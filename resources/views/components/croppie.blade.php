@@ -124,7 +124,7 @@
                         .send()
                         return;
                 }
-                $dispatch('on-croppie-modal-show', {
+                $dispatch('on-croppie-modal-show-{{ \Illuminate\Support\Str::of($getStatePath())->replace('.','') }}', {
                     id: 'croppie-modal-{{ $getStatePath() }}',
                     files: event.target.files,
 
@@ -134,17 +134,18 @@
 
     </div>
 
-    <div x-data="{files:null,}" @on-croppie-modal-show.window="
+    <div x-data="{files:null,}" @on-croppie-modal-show-{{ \Illuminate\Support\Str::of($getStatePath())->replace('.','') }}.window="
             files = $event.detail.files;
             id = $event.detail.id;
             $dispatch('open-modal', {id: id})
         ">
         <x-filament::modal
             class=""
-            width="2xl"
+            width="{{$getModalSize()}}"
+
             id="croppie-modal-{{ $getStatePath() }}"
         >
-            <div class=" z-5 w-full h-full flex flex-col justify-between" style="min-height: calc(100vh - 200px);"
+            <div class=" z-5 w-full h-full flex flex-col justify-between"
 
                  x-data="imageCropper({
                         imageUrl: '',
@@ -160,7 +161,7 @@
                     {{-- init Alpine --}}
                     <div class="h-full w-full relative"  >
                         <div  x-on:click.prevent class="tf-cropper-modal bg-white h-full">
-                            <div class="m-auto flex-co" x-ref="croppie"></div>
+                            <div class="m-auto flex-col" x-ref="croppie"></div>
                         </div>
 
                         <div x-show="!showCroppie" class="absolute top-0 left-0 w-full h-full bg-white z-10 flex items-center justify-center">
@@ -168,8 +169,6 @@
                             <div aria-label="Loading..." role="status" class="flex items-center space-x-2">
                                 <span class="text-xs font-medium text-gray-500">Loading...</span>
                             </div>
-
-
                         </div>
 
                     </div>

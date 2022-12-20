@@ -11,6 +11,7 @@ class Croppie extends FileUpload
 
     protected string | Closure | null $imageResizeTargetHeight = '400';
     protected string | Closure | null $imageResizeTargetWidth = '400';
+    protected string | Closure | null $modalSize = 'auto';
 
     public function getAcceptedFileTypes(): ?array
     {
@@ -18,7 +19,16 @@ class Croppie extends FileUpload
             "image/png"," image/gif","image/jpeg"
         ]);
         return parent::getAcceptedFileTypes();
-
     }
 
+    public function modalSize(string | Closure | null $modalSize) : static{
+        $this->modalSize = $modalSize;
+        return $this;
+    }
+
+
+    public function getModalSize(): ?string
+    {
+        return $this->evaluate($this->modalSize);
+    }
 }

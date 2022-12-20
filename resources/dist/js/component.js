@@ -36,17 +36,16 @@ document.addEventListener('alpine:init', () => {
                 this.bindCroppie(e.target.result)
             }
             await reader.readAsDataURL(files[0])
-
         },
         initCroppie() {
 
             this.croppie = new Croppie(
                 this.$refs.croppie, {
-                    viewport: {width: this.width, height: this.height, type: this.shape}, //circle or square
+                    viewport: {width: this.width-100, height: this.height -100, type: this.shape}, //circle or square
                     boundary: {width: this.width, height: this.height}, //default boundary container
                     showZoomer: true,
-                    enableResize: true,
-                    enableOrientation: true,
+                    enableResize: false,
+                    mouseWheelZoom: 'ctrl',
                     enforceBoundary: true,
                 })
         },
@@ -55,20 +54,23 @@ document.addEventListener('alpine:init', () => {
         saveCroppie() {
             this.croppie.result({
                 type: "blob",
-                size: "original"
+                size: "original",
+                quality: 1
             }).then((croppedImage) => {
+
+
 
                 this.showCroppie = false
                 this.hasImage = true
-                this.croppedImageBlob = croppedImage;
 
                 let input = document.getElementById(this.statePath).getElementsByTagName('input')[0]
                 let event = new Event('change');
-
+                let fileName = this.filename;
+                let filetype = this.filetype;
                 let file = new File(
                     [croppedImage],
-                    this.fileName,
-                    {type:this.filetype, lastModified:new Date().getTime()},
+                    fileName,
+                    {type:filetype, lastModified:new Date().getTime()},
                     'utf-8'
                 );
                 let container = new DataTransfer();
