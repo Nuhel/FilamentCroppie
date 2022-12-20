@@ -98,7 +98,11 @@
             />
         </div>
 
-        <div class="left-1/2"></div>
+        @php
+            $uniquemodalevent = \Illuminate\Support\Str::of($getStatePath())->replace('.','')->replace('_','');
+        @endphp
+
+
 
         <input
             {{ $isDisabled() ? 'disabled' : '' }}
@@ -124,7 +128,7 @@
                         .send()
                         return;
                 }
-                $dispatch('on-croppie-modal-show-{{ \Illuminate\Support\Str::of($getStatePath())->replace('.','') }}', {
+                $dispatch('on-croppie-modal-show-{{$uniquemodalevent}}', {
                     id: 'croppie-modal-{{ $getStatePath() }}',
                     files: event.target.files,
 
@@ -134,7 +138,7 @@
 
     </div>
 
-    <div x-data="{files:null,}" @on-croppie-modal-show-{{ \Illuminate\Support\Str::of($getStatePath())->replace('.','') }}.window="
+    <div x-data="{files:null,}" @on-croppie-modal-show-{{ $uniquemodalevent }}.window="
             files = $event.detail.files;
             id = $event.detail.id;
             $dispatch('open-modal', {id: id})
