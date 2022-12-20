@@ -21,8 +21,7 @@ This field has most of the same functionality of the [Filament File Upload](http
       ->imageResizeTargetHeight('746'),
 ```
 
-
-
+This Plugin is still under development. Some Croppie Feature need's to be implemented, but it provides the main feature of Croppie.  
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
