@@ -1,6 +1,15 @@
 # Filament Croppie Plugin
 
 
+
+## Installation
+
+You can install the package via composer:
+
+```bash
+composer require nuhel/filament-croppie
+```
+
 This field has most of the same functionality of the [Filament File Upload](https://filamentphp.com/docs/2.x/forms/fields#file-upload) field.
 
 ```php
