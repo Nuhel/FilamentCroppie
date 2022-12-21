@@ -41,7 +41,7 @@ document.addEventListener('alpine:init', () => {
 
             this.croppie = new Croppie(
                 this.$refs.croppie, {
-                    viewport: {width: this.width-100, height: this.height -100, type: this.shape}, //circle or square
+                    viewport: {width: this.width, height: this.height, type: this.shape}, //circle or square
                     boundary: {width: this.width, height: this.height}, //default boundary container
                     showZoomer: true,
                     enableResize: false,

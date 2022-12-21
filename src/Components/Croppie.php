@@ -11,7 +11,8 @@ class Croppie extends FileUpload
 
     protected string | Closure | null $imageResizeTargetHeight = '400';
     protected string | Closure | null $imageResizeTargetWidth = '400';
-    protected string | Closure | null $modalSize = 'auto';
+    protected string | Closure | null $modalSize = '6xl';
+    protected string | Closure | null $modalHeading = 'Manage Image';
 
     public function getAcceptedFileTypes(): ?array
     {
@@ -26,9 +27,18 @@ class Croppie extends FileUpload
         return $this;
     }
 
-
     public function getModalSize(): ?string
     {
         return $this->evaluate($this->modalSize);
+    }
+
+    public function modalHeading(string | Closure | null $modalHeading) : static{
+        $this->modalHeading = $modalHeading;
+        return $this;
+    }
+
+    public function getModalHeading(): ?string
+    {
+        return $this->evaluate($this->modalHeading);
     }
 }
