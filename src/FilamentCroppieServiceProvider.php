@@ -15,6 +15,7 @@ class FilamentCroppieServiceProvider extends PluginServiceProvider
 
     protected array $scripts = [
         'filament-croppie-script' => __DIR__ . '/../resources/dist/js/filament-croppie.js',
+        'filament-croppie-exif-js' => __DIR__ . '/../resources/dist/js/exif.js',
     ];
 
     protected array $beforeCoreScripts = [

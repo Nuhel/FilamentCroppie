@@ -28,7 +28,6 @@
     >
 
         <div
-
             x-data="fileUploadFormComponent({
             acceptedFileTypes: {{ json_encode($getAcceptedFileTypes()) }},
             canDownload: {{ $canDownload() ? 'true' : 'false' }},
@@ -171,6 +170,30 @@
                     <div class="h-full w-full relative"  >
                         <div  x-on:click.prevent class="bg-transparent h-full">
                             <div class="m-auto flex-col" x-ref="croppie"></div>
+                            <div class="flex justify-center gap-2 pb-2">
+
+
+                                @if ($isLeftRotationEnabled())
+                                    <x-filament::button class="px-2" type="button"  x-on:click.prevent="rotateLeft()">
+                                        <svg class="filament-button-icon w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-6 6m0 0l-6-6m6 6V9a6 6 0 0112 0v3" />
+                                        </svg>
+                                    </x-filament::button>
+                                @endif
+
+                                @if ($isRightRotationEnabled())
+                                <x-filament::button type="button"  x-on:click.prevent="rotateRight()" >
+                                    <svg style="transform: scale(-1,1)" class="filament-button-icon w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-6 6m0 0l-6-6m6 6V9a6 6 0 0112 0v3" />
+                                    </svg>
+                                </x-filament::button>
+                                @endif
+
+
+
+
+                            </div>
+
                         </div>
 
                         <div x-show="!showCroppie" class="absolute top-0 left-0 w-full h-full bg-white z-10 flex items-center justify-center">
@@ -197,6 +220,3 @@
     </div>
 
 </x-dynamic-component>
-
-
-
