@@ -47,9 +47,18 @@ document.addEventListener('alpine:init', () => {
                     enableResize: false,
                     mouseWheelZoom: 'ctrl',
                     enforceBoundary: true,
+                    enableOrientation: true,
+                    enableExif: true
                 })
         },
 
+        rotateLeft(){
+            this.croppie.rotate(90);
+        },
+
+        rotateRight(){
+            this.croppie.rotate(-90);
+        },
 
         saveCroppie() {
             this.croppie.result({
@@ -57,12 +66,8 @@ document.addEventListener('alpine:init', () => {
                 size: "original",
                 quality: 1
             }).then((croppedImage) => {
-
-
-
                 this.showCroppie = false
                 this.hasImage = true
-
                 let input = document.getElementById(this.statePath).getElementsByTagName('input')[0]
                 let event = new Event('change');
                 let fileName = this.filename;
@@ -76,7 +81,6 @@ document.addEventListener('alpine:init', () => {
                 let container = new DataTransfer();
                 container.items.add(file);
 
-
                 input.files = container.files;
                 this.$dispatch("close-modal", {id: "croppie-modal-"+this.statePath, files: null})
                 input.dispatchEvent(event);
@@ -85,7 +89,7 @@ document.addEventListener('alpine:init', () => {
         bindCroppie(src) {
             //avoid problems with croppie container not being visible when binding
             setTimeout(() => {
-                this.croppie.bind({url: src})
+                this.croppie.bind({url: src, orientation: 4})
                 setTimeout(() => {
                     this.showCroppie = true
                 }, 200)
