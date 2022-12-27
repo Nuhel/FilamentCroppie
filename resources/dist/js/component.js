@@ -89,7 +89,7 @@ document.addEventListener('alpine:init', () => {
         bindCroppie(src) {
             //avoid problems with croppie container not being visible when binding
             setTimeout(() => {
-                this.croppie.bind({url: src, orientation: 4})
+                this.croppie.bind({url: src, orientation: 1})
                 setTimeout(() => {
                     this.showCroppie = true
                 }, 200)
