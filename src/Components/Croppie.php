@@ -24,7 +24,7 @@ class Croppie extends FileUpload
     public function getAcceptedFileTypes(): ?array
     {
         $this->acceptedFileTypes([
-            "image/png"," image/gif","image/jpeg"
+            "image/png"," image/gif","image/jpeg","image/webp"
         ]);
 
         return parent::getAcceptedFileTypes();
