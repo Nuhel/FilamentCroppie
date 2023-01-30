@@ -63,7 +63,11 @@ document.addEventListener('alpine:init', () => {
         saveCroppie() {
             this.croppie.result({
                 type: "blob",
-                size: "original",
+                size:   {
+                    width:  this.width,
+                    height: this.height,
+                },
+                format: this.filetype,
                 quality: 1
             }).then((croppedImage) => {
                 this.showCroppie = false
