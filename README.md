@@ -33,6 +33,29 @@ Croppie::make('avatar')->avatar()
     ->imageResizeTargetHeight('300')
     ->modalSize('xl'),
 ```
+
+By default, the size of the resulting image will correspond to `imageResizeTargetWidth` and `imageResizeTargetHeight`. Using `keepOriginalSize`, the size of the resulting image will be at the original scale of the image.
+
+```php
+Croppie::make('avatar')->avatar()
+    ->enableOpen()->enableDownload()
+    ->imageResizeTargetWidth('300')
+    ->imageResizeTargetHeight('300')
+    ->keepOriginalSize()
+    ->modalSize('xl'),
+```
+By default, there is no outer container of the cropper. Using `withBoundary`, we can specify the outer container of the cropper. The specified value is in pixel and will be added to the width and the height of the cropper.
+
+```php
+Croppie::make('avatar')->avatar()
+    ->enableOpen()->enableDownload()
+    ->imageResizeTargetWidth('300')
+    ->imageResizeTargetHeight('300')
+    ->withBoundary('30')
+    ->modalSize('xl'),
+```
+
+
 We can make croppie circular using `avater` method.
 ![screenshot of big modal](./images/circural-example.png)
 
