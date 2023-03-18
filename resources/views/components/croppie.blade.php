@@ -161,7 +161,9 @@
                         files: files,
                         width: `{{$getImageResizeTargetWidth()}}`,
                         height: `{{$getImageResizeTargetHeight()}}`,
-                        statePath : `{{$getStatePath()}}`
+                        statePath : `{{$getStatePath()}}`,
+                        boundary: `{{ $getBoundary() }}`,
+                        size: `{{ $getSize() }}`
 
                     })" x-cloak
             >

@@ -21,6 +21,10 @@ class Croppie extends FileUpload
 
     protected bool | Closure $isRightRotationEnabled = false;
 
+    protected string|Closure|null $boundary = '0';
+
+    protected string $size = 'viewport';
+
     public function getAcceptedFileTypes(): ?array
     {
         $this->acceptedFileTypes([
@@ -88,6 +92,30 @@ class Croppie extends FileUpload
     public function isLeftRotationEnabled()
     {
         return $this->evaluate($this->isLeftRotationEnabled);
+    }
+
+    public function withBoundary(string|Closure|null $boundary): static
+    {
+        $this->boundary = $boundary;
+
+        return $this;
+    }
+
+    public function getBoundary(): ?string
+    {
+        return $this->evaluate($this->boundary);
+    }
+
+    public function keepOriginalSize(): static
+    {
+        $this->size = 'original';
+
+        return $this;
+    }
+
+    public function getSize(): ?string
+    {
+        return $this->evaluate($this->size);
     }
 
 }

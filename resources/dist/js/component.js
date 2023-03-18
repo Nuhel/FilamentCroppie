@@ -9,6 +9,8 @@ document.addEventListener('alpine:init', () => {
         height:config.height,
         shape: config.shape,
         statePath: config.statePath,
+        boundary: config.boundary,
+        size: config.size,
 
         croppie: {},
         init() {
@@ -41,8 +43,8 @@ document.addEventListener('alpine:init', () => {
 
             this.croppie = new Croppie(
                 this.$refs.croppie, {
-                    viewport: {width: this.width, height: this.height, type: this.shape}, //circle or square
-                    boundary: {width: this.width, height: this.height}, //default boundary container
+                    viewport: { width: this.width, height: this.height, type: this.shape }, //circle or square
+                    boundary: { width: parseInt(this.width) + parseInt(this.boundary), height: parseInt(this.height) + parseInt(this.boundary) }, //boundary container
                     showZoomer: true,
                     enableResize: false,
                     mouseWheelZoom: 'ctrl',
@@ -63,10 +65,7 @@ document.addEventListener('alpine:init', () => {
         saveCroppie() {
             this.croppie.result({
                 type: "blob",
-                size:   {
-                    width:  this.width,
-                    height: this.height,
-                },
+                size: this.size,
                 format: this.filetype,
                 quality: 1
             }).then((croppedImage) => {
